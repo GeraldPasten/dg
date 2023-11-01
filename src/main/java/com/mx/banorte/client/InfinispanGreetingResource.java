@@ -20,9 +20,11 @@ public class InfinispanGreetingResource {
     @POST
     @Path("/{id}")
     public CompletionStage<String> postGreeting(String id, Greeting greeting) {
+
+        System.out.println(id);
+        System.out.println(greeting);
         return cache.putAsync(id, greeting) 
-              .thenApply(g -> "Greeting done!")
-              .exceptionally(ex -> ex.getMessage());
+              .thenApply(g -> "Greeting done!");
     }
 
     @GET
